@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volunteerly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">V</div>
+          <div>
+            <div class="brand-name">Volunteerly</div>
+            <div class="brand-subtitle">Find your next impact</div>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <span>⌕</span>
+          <input type="text" id="searchInput" placeholder="Search opportunities" />
+        </div>
+
+        <div class="profile-pill">
+          <span class="avatar">A</span>
+          <span>Ariana</span>
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <section class="main-panel">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Volunteer opportunities</p>
+              <h1>Discover causes you care about</h1>
+            </div>
+            <button class="primary-btn">+ New alert</button>
+          </div>
+
+          <div class="topic-bar" id="topicBar">
+            <button class="topic-chip active" data-filter="All">All</button>
+            <button class="topic-chip" data-filter="Environment">Environment</button>
+            <button class="topic-chip" data-filter="Education">Education</button>
+            <button class="topic-chip" data-filter="Community">Community</button>
+            <button class="topic-chip" data-filter="Animals">Animals</button>
+            <button class="topic-chip" data-filter="Health">Health</button>
+          </div>
+
+          <div class="cards-grid" id="opportunityList"></div>
+        </section>
+
+        <aside class="sidebar">
+          <div class="panel saved-panel">
+            <div class="panel-header">
+              <h2>Saved</h2>
+              <span class="badge" id="savedCount">0</span>
+            </div>
+            <div id="savedList" class="mini-list"></div>
+          </div>
+
+          <div class="panel calendar-panel">
+            <div class="panel-header">
+              <h2>Calendar</h2>
+            </div>
+            <div class="calendar-grid">
+              <div class="calendar-day">Mon</div>
+              <div class="calendar-day">Tue</div>
+              <div class="calendar-day">Wed</div>
+              <div class="calendar-day">Thu</div>
+              <div class="calendar-day">Fri</div>
+              <div class="calendar-day inactive">Sat</div>
+              <div class="calendar-day inactive">Sun</div>
+
+              <div class="date-cell muted">23</div>
+              <div class="date-cell muted">24</div>
+              <div class="date-cell muted">25</div>
+              <div class="date-cell selected">26</div>
+              <div class="date-cell">27</div>
+              <div class="date-cell">28</div>
+              <div class="date-cell">29</div>
+            </div>
+          </div>
+
+          <div class="panel notice-panel">
+            <div class="panel-header">
+              <h2>Notifications</h2>
+            </div>
+            <ul id="notificationList" class="notification-list"></ul>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
