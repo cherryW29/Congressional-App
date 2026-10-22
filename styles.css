@@ -421,8 +421,152 @@ h1 {
   padding: 12px;
 }
 
+.admin-body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #edf5ff 0%, #f8fbff 100%);
+}
+
+.admin-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(211, 224, 243, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 16px 30px rgba(95, 117, 150, 0.06);
+}
+
+.nav-link {
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.admin-content {
+  margin-top: 28px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 24px;
+}
+
+.admin-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(216, 228, 242, 0.9);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.auth-card {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.opportunity-form,
+#adminLoginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.opportunity-form label,
+#adminLoginForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.opportunity-form input,
+.opportunity-form textarea,
+.opportunity-form select,
+#adminLoginForm input {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  background: #f8fbff;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form-message {
+  min-height: 20px;
+  margin: 0;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.admin-opportunity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-opportunity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: #f8fbff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.admin-opportunity-item strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.admin-opportunity-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.danger-btn {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+  border-radius: 10px;
+  padding: 8px 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
 @media (max-width: 980px) {
   .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -438,6 +582,16 @@ h1 {
     max-width: none;
   }
 
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-topbar,
   .section-header {
     flex-direction: column;
     align-items: flex-start;

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volunteerly Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-body">
+    <div class="admin-shell">
+      <header class="admin-topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">V</div>
+          <div>
+            <div class="brand-name">Volunteerly</div>
+            <div class="brand-subtitle">Admin Portal</div>
+          </div>
+        </div>
+        <a href="index.html" class="nav-link">← Back to app</a>
+      </header>
+
+      <main class="admin-content">
+        <section id="adminLoginSection" class="admin-card auth-card">
+          <p class="eyebrow">Restricted access</p>
+          <h1>Admin Login</h1>
+          <form id="adminLoginForm">
+            <label>
+              Username
+              <input id="adminUsername" type="text" value="admin" />
+            </label>
+            <label>
+              Password
+              <input id="adminPassword" type="password" placeholder="Enter password" />
+            </label>
+            <button type="submit" class="primary-btn admin-submit">Login</button>
+            <p id="loginMessage" class="form-message" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section id="adminDashboard" class="admin-grid hidden">
+          <div class="admin-card">
+            <div class="section-header compact">
+              <div>
+                <p class="eyebrow">Manage opportunities</p>
+                <h2>Add a new opportunity</h2>
+              </div>
+            </div>
+
+            <form id="opportunityForm" class="opportunity-form">
+              <div class="field-row">
+                <label>
+                  Title
+                  <input id="title" type="text" placeholder="Volunteer event title" required />
+                </label>
+                <label>
+                  Organization
+                  <input id="organization" type="text" placeholder="Organization name" required />
+                </label>
+              </div>
+
+              <label>
+                Description
+                <textarea id="description" rows="4" placeholder="Describe what volunteers will do" required></textarea>
+              </label>
+
+              <div class="field-row">
+                <label>
+                  Topic
+                  <select id="topic" required>
+                    <option value="Environment">Environment</option>
+                    <option value="Education">Education</option>
+                    <option value="Community">Community</option>
+                    <option value="Animals">Animals</option>
+                    <option value="Health">Health</option>
+                  </select>
+                </label>
+                <label>
+                  Date
+                  <input id="date" type="text" placeholder="Nov 30" required />
+                </label>
+              </div>
+
+              <div class="field-row">
+                <label>
+                  Time
+                  <input id="time" type="text" placeholder="9:00 AM" required />
+                </label>
+                <label>
+                  Link
+                  <input id="url" type="url" placeholder="https://example.com" required />
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">Publish opportunity</button>
+              </div>
+              <p id="submitMessage" class="form-message" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="admin-card list-card">
+            <div class="section-header compact">
+              <div>
+                <p class="eyebrow">Current list</p>
+                <h2>Opportunities</h2>
+              </div>
+            </div>
+            <div id="adminOpportunityList" class="admin-opportunity-list"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

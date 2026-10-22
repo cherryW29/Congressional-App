@@ -1,4 +1,4 @@
-const opportunities = [
+const defaultOpportunities = [
   {
     id: 1,
     title: 'Tree Planting Weekend',
@@ -72,6 +72,17 @@ const opportunities = [
     saved: false,
   },
 ];
+
+function getOpportunities() {
+  const stored = localStorage.getItem('volunteerly-opportunities');
+  if (stored) {
+    return JSON.parse(stored);
+  }
+  localStorage.setItem('volunteerly-opportunities', JSON.stringify(defaultOpportunities));
+  return defaultOpportunities;
+}
+
+const opportunities = getOpportunities();
 
 const opportunityList = document.getElementById('opportunityList');
 const savedList = document.getElementById('savedList');
@@ -194,6 +205,25 @@ function toggleSave(id) {
   renderNotifications();
 }
 
+function syncOpportunities() {
+  const stored = localStorage.getItem('volunteerly-opportunities');
+  if (stored) {
+    opportunities.length = 0;
+    opportunities.push(...JSON.parse(stored));
+  }
+}
+
+function renderAll() {
+  renderOpportunities();
+  renderSavedList();
+  renderNotifications();
+}
+
+window.addEventListener('storage', () => {
+  syncOpportunities();
+  renderAll();
+});
+
 opportunityList.addEventListener('click', (event) => {
   const target = event.target.closest('button');
   if (!target) return;
@@ -218,6 +248,4 @@ searchInput.addEventListener('input', () => {
   renderOpportunities();
 });
 
-renderOpportunities();
-renderSavedList();
-renderNotifications();
+renderAll();
