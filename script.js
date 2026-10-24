@@ -193,6 +193,7 @@ function toggleLike(id) {
   const item = opportunities.find((opportunity) => opportunity.id === id);
   if (!item) return;
   item.liked = !item.liked;
+  localStorage.setItem("volunteerly-opportunities", JSON.stringify(opportunities));
   renderOpportunities();
 }
 
@@ -200,6 +201,7 @@ function toggleSave(id) {
   const item = opportunities.find((opportunity) => opportunity.id === id);
   if (!item) return;
   item.saved = !item.saved;
+  localStorage.setItem("volunteerly-opportunities", JSON.stringify(opportunities));
   renderOpportunities();
   renderSavedList();
   renderNotifications();
