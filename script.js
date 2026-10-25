@@ -252,6 +252,7 @@ searchInput.addEventListener('input', () => {
 
 renderAll();
 
+/*
 const newAlertButton = document.getElementById('newAlertButton');
 const alertStatus = document.getElementById('alert status');
 let alertPreferences = JSON.parse(
@@ -290,3 +291,4 @@ newAlertButton.addEventListener('click', () => {
 });
 
 updateAlertButton();
+*/
