@@ -251,3 +251,42 @@ searchInput.addEventListener('input', () => {
 });
 
 renderAll();
+
+const newAlertButton = document.getElementById('newAlertButton');
+const alertStatus = document.getElementById('alert status');
+let alertPreferences = JSON.parse(
+  localStorage.getItem('volunteerly-alerts') || '[]'
+);
+
+function updateAlertButton() {
+  const enabled = alertPreferences.includes(activeFilter);
+
+  newAlertButton.textContent = enabled
+    ? `✓ Alert enabled: ${activeFilter}`
+    : `+ New alert: ${activeFilter}`;
+
+  newAlertButton.setAttribute('aria-pressed', String(enabled));
+}
+
+newAlertButton.addEventListener('click', () => {
+  const index = alertPreferences.indexOf(activeFilter);
+
+  if (index === -1) {
+    alertPreferences.push(activeFilter);
+    alertStatus.textContent =
+      `Alerts enabled for ${activeFilter} opportunities.`;
+  } else {
+    alertPreferences.splice(index, 1);
+    alertStatus.textContent =
+      `Alerts disabled for ${activeFilter} opportunities.`;
+  }
+
+  localStorage.setItem(
+    'volunteerly-alerts',
+    JSON.stringify(alertPreferences)
+  );
+
+  updateAlertButton();
+});
+
+updateAlertButton();
