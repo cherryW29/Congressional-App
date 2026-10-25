@@ -38,9 +38,18 @@
               <p class="eyebrow">Volunteer opportunities</p>
               <h1>Discover causes you care about</h1>
             </div>
-            <button class="primary-btn">+ New alert</button>
+            
+            <button
+              class="primary-btn"
+              id="newAlertButton"
+              type="button"
+              aria-pressed="false"
+            >
+              + New alert
+            </button>
           </div>
-
+          <p id="alertStatus" role="status" aria-live="polite"></p>
+          
           <div class="topic-bar" id="topicBar">
             <button class="topic-chip active" data-filter="All">All</button>
             <button class="topic-chip" data-filter="Environment">Environment</button>
