@@ -210,9 +210,23 @@ async function getOpportunities() {
 
     if (remoteOpportunities.length) {
       const localData = stored ? JSON.parse(stored) : [];
-      const activeData = Array.isArray(localData) && localData.length ? localData : remoteOpportunities;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(activeData));
-      return activeData;
+      const localMap = new Map(
+        (Array.isArray(localData) ? localData : []).map((item) => [Number(item.id), item])
+      );
+
+      const merged = remoteOpportunities.map((item) => {
+        const savedState = localMap.get(Number(item.id));
+        return savedState
+          ? {
+              ...item,
+              liked: Boolean(savedState.liked),
+              saved: Boolean(savedState.saved),
+            }
+          : item;
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+      return merged;
     }
 
     throw new Error('No opportunities returned from JSON file');
