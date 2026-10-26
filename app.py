@@ -1,12 +1,31 @@
+import atexit
+import json
 import os
+from pathlib import Path
+
 from flask import Flask, jsonify, send_from_directory
 
 app = Flask(__name__, static_folder='.')
+BACKUP_OPPORTUNITIES = Path(__file__).resolve().parent / 'opportunities_back.json'
 
 
 @app.route('/health')
 def health_check():
     return jsonify({"status": "ok"})
+
+
+@app.route('/opportunities.json')
+def serve_opportunities_json():
+    if BACKUP_OPPORTUNITIES.exists():
+        return send_from_directory(app.static_folder, 'opportunities_back.json')
+    return jsonify({"error": "No backup opportunities file available"}), 404
+
+
+@app.route('/refresh')
+@app.route('/reload-opportunities')
+@app.route('/reload-opportunities-json', methods=['GET', 'POST'])
+def refresh_now():
+    return jsonify({"status": "ok", "message": "Using opportunities_back.json; daily generation disabled."})
 
 
 @app.route('/')

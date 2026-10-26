@@ -10,6 +10,43 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="authModal" class="auth-modal hidden" aria-hidden="true">
+      <div class="auth-panel">
+        <div class="auth-header">
+          <div>
+            <p class="eyebrow">Welcome back</p>
+            <h2 id="authTitle">Login</h2>
+          </div>
+          <button id="closeAuthModal" class="close-btn" type="button" aria-label="Close login form">×</button>
+        </div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Authentication tabs">
+          <button class="auth-tab active" type="button" data-mode="login">Login</button>
+          <button class="auth-tab" type="button" data-mode="register">Register</button>
+        </div>
+
+        <form id="authForm" class="auth-form">
+          <label class="auth-field hidden" id="emailField">
+            <span>Email</span>
+            <input id="authEmail" type="email" placeholder="student@example.com" />
+          </label>
+
+          <label class="auth-field">
+            <span>Username</span>
+            <input id="authUsername" type="text" placeholder="username" required />
+          </label>
+
+          <label class="auth-field">
+            <span>Password</span>
+            <input id="authPassword" type="password" placeholder="••••••••" required />
+          </label>
+
+          <button class="primary-btn auth-submit" type="submit" id="authSubmitBtn">Login</button>
+          <p id="authMessage" class="auth-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
     <div class="app-shell">
       <header class="topbar">
         <div class="brand-wrap">
@@ -25,41 +62,55 @@
           <input type="text" id="searchInput" placeholder="Search opportunities" />
         </div>
 
-        <div class="profile-pill">
-          <span class="avatar">A</span>
-          <span>Ariana</span>
+        <div class="profile-group">
+          <button id="authButton" class="secondary-btn" type="button">Login / Register</button>
+          <button id="logoutButton" class="secondary-btn hidden" type="button">Logout</button>
+          <div class="profile-pill" id="profilePill">
+            <span class="avatar" id="profileAvatar">G</span>
+            <span id="profileName">Guest</span>
+          </div>
         </div>
       </header>
 
       <main class="content-grid">
         <section class="main-panel">
-          <div class="section-header">
-            <div>
-              <p class="eyebrow">Volunteer opportunities</p>
-              <h1>Discover causes you care about</h1>
-            </div>
-            <!---
-            <button
-              class="primary-btn"
-              id="newAlertButton"
-              type="button"
-              aria-pressed="false"
-            >
-              + New alert
-            </button>
-          </div>
-          <p id="alertStatus" role="status" aria-live="polite"></p>
-          -->
-          <div class="topic-bar" id="topicBar">
-            <button class="topic-chip active" data-filter="All">All</button>
-            <button class="topic-chip" data-filter="Environment">Environment</button>
-            <button class="topic-chip" data-filter="Education">Education</button>
-            <button class="topic-chip" data-filter="Community">Community</button>
-            <button class="topic-chip" data-filter="Animals">Animals</button>
-            <button class="topic-chip" data-filter="Health">Health</button>
+          <div id="guestState" class="guest-state hidden">
+            <p class="eyebrow">Create your account</p>
+            <h1>Join Volunteerly to save opportunities</h1>
+            <p>
+              Sign up to save causes, follow alerts, and keep track of the volunteer roles you want to explore.
+            </p>
+            <button id="guestRegisterButton" class="primary-btn" type="button">Create account</button>
           </div>
 
-          <div class="cards-grid" id="opportunityList"></div>
+          <div id="dashboardContent">
+            <div class="section-header">
+              <div>
+                <p class="eyebrow">Volunteer opportunities</p>
+                <h1>Discover causes you care about</h1>
+              </div>
+              <div class="header-actions">
+                <button class="secondary-btn" id="reloadButton" type="button">Reload opportunities</button>
+                <button class="primary-btn" id="newAlertButton" type="button" aria-pressed="false">
+                  + New alert
+                </button>
+              </div>
+            </div>
+            <p id="alertStatus" role="status" aria-live="polite"></p>
+
+            <div class="topic-bar" id="topicBar">
+              <button class="topic-chip active" data-filter="All">All</button>
+              <button class="topic-chip" data-filter="Environment">Environment</button>
+              <button class="topic-chip" data-filter="Education">Education</button>
+              <button class="topic-chip" data-filter="Community Service">Community Service</button>
+              <button class="topic-chip" data-filter="Animal Care">Animal Care</button>
+              <button class="topic-chip" data-filter="Health">Health</button>
+              <button class="topic-chip" data-filter="Technology">Technology</button>
+              <button class="topic-chip" data-filter="Business">Business</button>
+            </div>
+
+            <div class="cards-grid" id="opportunityList"></div>
+          </div>
         </section>
 
         <aside class="sidebar">

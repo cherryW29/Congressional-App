@@ -20,7 +20,20 @@ High school students often struggle to find meaningful volunteer opportunities t
 5. Send notifications/reminders to let users know the deadline of the opportunities.
 
 ## Key Features
-### 1. Opportunity Discovery Feed
+
+### 0. Users register and login
+- allow new users to register new account for login, resiger new account will need user name, password, email
+- allow existing users to login with their user name and password
+- save all user account and password into database
+- user profile, saved opportunities, loved opportunities will be saved in database
+
+
+### 1. search and update opportunities
+- show all opportunities in opportunities_back.json file in the app opportunities dashboard
+
+
+
+### 2. Opportunity Discovery Feed
 - Browse cards for volunteer opportunities
 - Each card includes:
   - title
@@ -34,7 +47,7 @@ High school students often struggle to find meaningful volunteer opportunities t
   - save button
 
 
-### 2. Topic Filtering
+### 3. Topic Filtering
 - Users can filter by category such as:
   - Environment
   - Education
@@ -44,16 +57,16 @@ High school students often struggle to find meaningful volunteer opportunities t
   - Technology
   - Business
 
-### 3. Save and Like
+### 4. Save and Like
 - Users can like opportunities they are interested in.
 - Users can save opportunities to their personal list.
 - Saved items are shown on a dedicated "Saved" section and calendar.
 
-### 4. Calendar View
+### 5. Calendar View
 - Saved opportunities appear in a monthly or weekly calendar.
 - Users can see upcoming dates and plan volunteer time.
 
-### 5. Notifications
+### 6. Notifications
 - Notification reminders appear on the dashboard.
 - Users receive alerts for upcoming opportunities they saved.
 - Mobile-friendly notification design can be extended to phone push notifications.
